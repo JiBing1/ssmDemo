@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:cache="http://www.springframework.org/schema/cache"
+
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+
+		http://www.springframework.org/schema/aop
+		
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
+
+
+
+	default-autowire="byName">
+	<mvc:annotation-driven />
+
+	<context:component-scan base-package="com.persionel.study.*"></context:component-scan>
+
+	<!-- 配置jdbc.properties的路径 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="${jdbc.driverClassName}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		
+		<property name="minPoolSize" value="10" />
+		<property name="maxPoolSize" value="100" />
+		<property name="maxIdleTime" value="1800" />
+		<property name="acquireIncrement" value="3" />
+		<property name="maxStatements" value="1000" />
+		<property name="initialPoolSize" value="10" />
+		<property name="idleConnectionTestPeriod" value="60" />
+		<property name="acquireRetryAttempts" value="30" />
+		<property name="breakAfterAcquireFailure" value="true" />
+		<property name="testConnectionOnCheckout" value="false" />
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis/sqlMapping.xml" />
+	</bean>
+
+
+
+
+
+	<!-- 注入相关sessionFactory至Service -->
+<!-- 	<bean id="userService" class="com.vnb.test.service.impl.UserServiceImpl">
+		<property name="sessionFactory" ref="sqlSessionFactory"></property>
+	</bean> -->
+	<!-- <bean id="wastService" class="com.vnb.test.service.impl.WasteBookServiceImpl">
+		<property name="sessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+
+	Controller注入
+	<bean id="searchController" class="com.vnb.test.controller.SearchController">
+		<property name="userService" ref="userService"></property>
+		<property name="wastService" ref="wastService"></property>
+	</bean> -->
+
+
+	
+	
+</beans>
