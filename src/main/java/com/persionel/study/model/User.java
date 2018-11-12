@@ -1,7 +1,5 @@
 package com.persionel.study.model;
 
-import java.util.Date;
-
 public class User {
 	private int userId;
 	private String username;
@@ -12,7 +10,8 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	private Date birthday;
+	//@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private String birthday;
 	private int age;
 	private String sex;
 	public int getUserId() {
@@ -27,10 +26,10 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	public int getAge() {

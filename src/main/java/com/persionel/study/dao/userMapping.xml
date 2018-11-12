@@ -52,7 +52,7 @@
 			<if test="userId!=null">#{userId},</if>
 			<if test="username!=null">#{username},</if>
 			<if test="password != null">#{password},</if>
-			<if test="birthday != null">#{birthday},</if>
+			<if test="birthday != null">DATE_FORMAT(#{birthday},'%Y-%m-%d %H:%i:%S'),</if>
 			<if test="age != null">#{age},</if>
 			<if test="sex != null">#{sex},</if>
 		</trim>

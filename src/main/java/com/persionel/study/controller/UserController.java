@@ -23,4 +23,11 @@ public class UserController {
 		System.out.println(list);
 		return list;
 	}
+	
+	@RequestMapping(value="/insertUserInfo")
+	@ResponseBody
+	public int insertUserInfo(User user){
+		System.out.println(user);
+		return userService.insertUserInfo(user);
+	}
 }

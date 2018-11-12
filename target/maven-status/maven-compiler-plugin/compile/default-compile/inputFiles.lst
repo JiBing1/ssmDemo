@@ -1,6 +1,8 @@
+/home/user/workspace/ssmDemo/src/main/java/com/persionel/study/controller/JpushController.java
 /home/user/workspace/ssmDemo/src/main/java/com/persionel/study/service/impl/UserServiceImpl.java
 /home/user/workspace/ssmDemo/src/main/java/com/persionel/study/controller/HelloWorldController.java
 /home/user/workspace/ssmDemo/src/main/java/com/persionel/study/model/User.java
+/home/user/workspace/ssmDemo/src/main/java/com/persionel/study/commonConst/CommonConst.java
 /home/user/workspace/ssmDemo/src/main/java/com/persionel/study/service/IUserService.java
 /home/user/workspace/ssmDemo/src/main/java/com/persionel/study/controller/UserController.java
 /home/user/workspace/ssmDemo/src/main/java/com/persionel/study/dao/IUserDao.java
